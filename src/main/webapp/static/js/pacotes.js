@@ -16,9 +16,8 @@ var aplicarListeners = function() {
 	
 	$('.btn-editar').on('click', function(){
 		var id = $(this).parents('tr').data('id');
-		var url = 'pacotes/'+id;
-		
-		$.get(url,function(pacote){
+	
+		$.get(id,function(pacote){
 				
 				$('#id').val(pacote.id);
 				$('#origem').val(pacote.origem);
@@ -33,7 +32,7 @@ var aplicarListeners = function() {
 		var pacotes = $('#quantidade-pacotes').text();
 		
 		$.ajax({
-			url : "pacotes/"+id,
+			url : id,
 			type: 'DELETE',
 			success: function(result) {
 				$('tr[data-id="'+id+'"]').remove();
@@ -46,15 +45,17 @@ var aplicarListeners = function() {
 	
 	$('#btn-salvar').on('click', function() {
 		var url = 'pacotes';
+		
 		var dadosPacote = $('#form-pacote').serialize();
 
-		$.post(url, dadosPacote)
+		$.post(window.location.href , dadosPacote)
 			.done(function(pagina){
 			$('#secao-pacotes').html(pagina);
 			aplicarListeners();
 			
 		})
-		.fail(function() {
+		.fail(function(e) {
+			console.log(e);
 			alert('Erro ao salvar.');
 		})
 		.always(function() {
