@@ -18,7 +18,7 @@
 		</div>
 	</c:if>
 	<section class="container" id="secao-pacotes">
-		<jsp:include page="tabela-pacotes.jsp" />
+		<jsp:include page="tabela-viagem.jsp" />
 	</section>
-	<jsp:include page="modal-pacote.jsp"></jsp:include>
+	<jsp:include page="modal-viagem.jsp"></jsp:include>
 </t:wrapper>

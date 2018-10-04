@@ -17,7 +17,7 @@ var aplicarListeners = function() {
 	$('.btn-editar').on('click', function(){
 		var id = $(this).parents('tr').data('id');
 	
-		$.get(id,function(pacote){
+		$.get(window.location.href.concat('/').concat(id),function(pacote){
 				
 				$('#id').val(pacote.id);
 				$('#origem').val(pacote.origem);
@@ -32,7 +32,7 @@ var aplicarListeners = function() {
 		var pacotes = $('#quantidade-pacotes').text();
 		
 		$.ajax({
-			url : id,
+			url : window.location.href.concat('/').concat(id),
 			type: 'DELETE',
 			success: function(result) {
 				$('tr[data-id="'+id+'"]').remove();

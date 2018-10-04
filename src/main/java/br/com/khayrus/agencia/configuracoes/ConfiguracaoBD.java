@@ -8,7 +8,10 @@ import javax.sql.DataSource;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
@@ -42,7 +45,7 @@ public class ConfiguracaoBD {
 		
 		Properties jpaProterties = new Properties();
 		jpaProterties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
-		jpaProterties.put("hibernate.hbm2ddl.auto", "update");
+		jpaProterties.put("hibernate.hbm2ddl.auto", "create");
 		entityManagerFactoryBean.setJpaProperties(jpaProterties);
 		return entityManagerFactoryBean;
 	}
@@ -54,4 +57,15 @@ public class ConfiguracaoBD {
 		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return transactionManager;
 	}
+	
+	 @Bean
+	 public DataSourceInitializer dataSourceInitializer() throws IllegalStateException, PropertyVetoException {
+	     ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
+	     resourceDatabasePopulator.addScript(new ClassPathResource("/data.sql"));
+
+	     DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
+	     dataSourceInitializer.setDataSource(dataSource());
+	     dataSourceInitializer.setDatabasePopulator(resourceDatabasePopulator);
+	     return dataSourceInitializer;
+	 }
 }

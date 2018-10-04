@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 
@@ -35,8 +36,8 @@
 						<th>Origem</th>
 						<th>Destino</th>
 						<th>Categoria</th>
-						<th>Editar</th>
-						<th>Deletar</th>
+						<th>Data Ida</th>
+						<th>Data Volta</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,6 +47,8 @@
 							<td>${pacote.origem}</td>
 							<td>${pacote.destino}</td>
 							<td>${pacote.categoria}</td>
+							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${pacote.dtIda}" /></td>
+							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${pacote.dtVolta}" /></td>
 							<td><button type="button" class="btn btn-round btn-warning btn-editar">Editar</button></td>
 							<td><button type="button" class="btn btn-round btn-danger btn-deletar">Deletar</button></td>
 						</tr>
@@ -53,16 +56,8 @@
 				</tbody>
 				<tfoot>
 		<tr>
-			<td colspan="6"><h5>Pacotes cadastrados: <span
-				id="quantidade-pacotes">${pacotes.size()}</span></h5></td>
-		</tr>
-		<tr>
-			<td colspan="6">
-				<button type="button" class="btn btn-round btn-primary" data-toggle="modal" data-target="#modal-pacote">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Cadastrar Pacote
-				
-				</button>
-			</td>
+			<td colspan="6"><h5>Viagens realizadas: <span
+				id="quantidade-viagens">${viagem.size()}</span></h5></td>
 		</tr>
 	</tfoot>
 			</table>

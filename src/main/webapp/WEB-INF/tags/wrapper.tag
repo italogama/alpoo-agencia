@@ -17,6 +17,10 @@
     <link href="/agencia/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="/agencia/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="/agencia/static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="/agencia/static/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
 	
     <!-- Custom Theme Style -->
     <link href="/agencia/static/build/css/custom.min.css" rel="stylesheet">
@@ -57,7 +61,7 @@
                   <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     	<li><a href="/agencia/app">Index</a></li>
-                      <li><a href="/agencia/app/pacotes">Pacotes</a></li>
+                      <li><a href="/agencia/app/viagem">Viagem</a></li>
                       <li><a href="/agencia/app/produtos">Produtos</a></li>
                     </ul>
                   </li>
@@ -162,47 +166,36 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Resumo</h3>
+                <h3>${titulo}</h3>
               </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Pesquisar por...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Buscar</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+             </div>
 
             <div class="clearfix"></div>
 			
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2><!-- Incluir tag para alterar nome da pagina acessada ##title --></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
+                
+<!--                   <div class="x_title"> -->
+<!--                     <h2>Incluir tag para alterar nome da pagina acessada ##title</h2> -->
+<!--                     <ul class="nav navbar-right panel_toolbox"> -->
+<!--                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a> -->
+<!--                       </li> -->
+<!--                       <li class="dropdown"> -->
+<!--                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a> -->
+<!--                         <ul class="dropdown-menu" role="menu"> -->
+<!--                           <li><a href="#">Settings 1</a> -->
+<!--                           </li> -->
+<!--                           <li><a href="#">Settings 2</a> -->
+<!--                           </li> -->
+<!--                         </ul> -->
+<!--                       </li> -->
+<!--                     </ul> -->
+<!--                     <div class="clearfix"></div> -->
+<!--                   </div> -->
                   <div class="x_content">
                   	<jsp:doBody/>
                   </div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -229,6 +222,8 @@
     <!-- NProgress -->
     <script src="/agencia/static/vendors/nprogress/nprogress.js"></script>
     <script src="/agencia/static/js/pacotes.js"></script>
+    <script src="/agencia/static/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="/agencia/static/vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
     
     <!-- Custom Theme Scripts -->
     <script src="/agencia/static/build/js/custom.min.js"></script>

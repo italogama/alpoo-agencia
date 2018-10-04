@@ -15,35 +15,35 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.khayrus.agencia.excecoes.PacoteInvalidoException;
-import br.com.khayrus.agencia.modelo.entidades.Pacote;
+import br.com.khayrus.agencia.modelo.entidades.Viagem;
 import br.com.khayrus.agencia.modelo.enumeracoes.CategoriaDePacote;
-import br.com.khayrus.agencia.modelo.repositorios.PacoteRepositorio;
+import br.com.khayrus.agencia.modelo.repositorios.ViagemRepositorio;
 
 //		/app/pacotes (metodo GET) -> listarPacotes
 //		/app/pacotes (metodo POST) -> salvarPacotes
 
 @Controller
-@RequestMapping("/pacotes")
-public class PacoteController {
+@RequestMapping("/viagem")
+public class ViagemController {
 
 	@Autowired
-	private PacoteRepositorio pacoteRepositorio;
+	private ViagemRepositorio viagemRepositorio;
 
 	@RequestMapping(method=RequestMethod.GET)
 	public String listarPacotes(Model model) {
-		Iterable<Pacote> pacotes = pacoteRepositorio.findAll();
-
-		model.addAttribute("titulo", "Listagem de Pacotes");
-		model.addAttribute("pacotes", pacotes);
+		Iterable<Viagem> viagem = viagemRepositorio.findAll();
+		
+		model.addAttribute("titulo", "Passagens");
+		model.addAttribute("viagem", viagem);
 		model.addAttribute("categorias", CategoriaDePacote.values());
-		return "pacote/listagem";
+		return "viagem/viagem";
 	}
 	// /WEB-INF/pacote/listagem.jsp
 
 	@RequestMapping(method=RequestMethod.POST)
 	// ModelAttribute mapeia os atributos de um formulario pra objeto
-	public String salvarPacote(
-			@Valid @ModelAttribute Pacote pacote,
+	public String salvarViagem(
+			@Valid @ModelAttribute Viagem pacote,
 			BindingResult bindingResult,
 			Model model) {
 
@@ -51,18 +51,18 @@ public class PacoteController {
 			throw new PacoteInvalidoException();
 
 		} else {
-			pacoteRepositorio.save(pacote);
+			viagemRepositorio.save(pacote);
 		}
 
-		model.addAttribute("pacotes", pacoteRepositorio.findAll());
+		model.addAttribute("viagem", viagemRepositorio.findAll());
 		model.addAttribute("categorias", CategoriaDePacote.values());
-		return "pacote/tabela-pacotes";
+		return "pacote/form-viagem";
 	}
 
 	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	public ResponseEntity<String> deletarPacote(@PathVariable Long id) {
 		try {
-			pacoteRepositorio.delete(id);
+			viagemRepositorio.delete(id);
 			return new ResponseEntity<String>(HttpStatus.OK);
 			
 		} catch (Exception ex) {
@@ -73,8 +73,8 @@ public class PacoteController {
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}")
 	@ResponseBody
-	public Pacote buscarPacote(@PathVariable Long id) {
-		Pacote pacote = pacoteRepositorio.findOne(id);
-		return pacote;
+	public Viagem buscarViagem(@PathVariable Long id) {
+		Viagem viagem = viagemRepositorio.findOne(id);
+		return viagem;
 	}
 }
