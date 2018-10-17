@@ -4,16 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 
 <div class="col-md-12 col-sm-6 col-xs-12">
 	<div class="x_panel">
 		<div class="x_title">
-			<h2>
-				Ultimas Viagens :
-			</h2>
+			<h2>Comprar passagem:</h2>
 			<ul class="nav navbar-right panel_toolbox">
 				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 				</li>
@@ -31,61 +29,51 @@
 		<div class="x_content">
 			<table class="table table-hover">
 				<form id="form-pacote" method="post">
-				<div class="x_panel">
-					<div class="x_content">
-						<input id="id" name="id" type="hidden">
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-							<input type="text" class="form-control" id="inputSuccess2" placeholder="Origem"> 
-							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-							<input type="text" class="form-control" id="inputSuccess3" placeholder="Destino">
-							<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-							<input type="text" class="form-control" id="inputSuccess4" placeholder="Data Ida">
-							<span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-							<input type="text" class="form-control" id="inputSuccess5" placeholder="Data Volta">
-							<span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-						</div>
-						<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-							<input type="text" class="form-control" id="inputSuccess5" placeholder="Valor">
-							<span class="fa fa-money form-control-feedback right" aria-hidden="true"></span>
-						</div>
-						<div class="form-group">
-							<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-								<button type="button" data-toggle="modal" data-target="#modal-pacote" class="btn btn-primary">Cancel</button>
-								<button class="btn btn-primary" type="reset">Reset</button>
-								<button type="submit" class="btn btn-success">Submit</button>
+					<div class="x_panel">
+						<div class="x_content">
+							<input id="id" name="id" type="hidden">
+							<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+								<input type="text" class="form-control" id="inputSuccess2"
+									placeholder="Origem"> <span
+									class="fa fa-user form-control-feedback right"
+									aria-hidden="true"></span>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+								<input type="text" class="form-control" id="inputSuccess3"
+									placeholder="Destino"> <span
+									class="fa fa-user form-control-feedback right"
+									aria-hidden="true"></span>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+								<input type="text" class="form-control" id="inputSuccess4"
+									placeholder="Data Ida"> <span
+									class="fa fa-calendar form-control-feedback right"
+									aria-hidden="true"></span>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+								<input type="text" class="form-control" id="inputSuccess5"
+									placeholder="Data Volta"> <span
+									class="fa fa-calendar form-control-feedback right"
+									aria-hidden="true"></span>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+								<input type="text" class="form-control" id="inputSuccess5"
+									placeholder="Valor"> <span
+									class="fa fa-money form-control-feedback right"
+									aria-hidden="true"></span>
+							</div>
+							<div class="form-group">
+								<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3 mid_center">
+									<button type="button" data-toggle="modal"
+										data-target="#modal-pacote" class="btn btn-primary">Cancel</button>
+									<button class="btn btn-primary" type="reset">Reset</button>
+									<button type="submit" class="btn btn-success">Submit</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</form>
-				<tbody>
-					<c:forEach items="${pacotes}" var="pacote">
-						<tr data-id="${pacote.id}">
-							<td>${pacote.id}</td>
-							<td>${pacote.origem}</td>
-							<td>${pacote.destino}</td>
-							<td>${pacote.categoria}</td>
-							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${pacote.dtIda}" /></td>
-							<td><fmt:formatDate pattern="dd/MM/yyyy" value="${pacote.dtVolta}" /></td>
-							<td><button type="button" class="btn btn-round btn-warning btn-editar">Editar</button></td>
-							<td><button type="button" class="btn btn-round btn-danger btn-deletar">Deletar</button></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-				<tfoot>
-		<tr>
-			<td colspan="6"><h5>Viagens realizadas: <span
-				id="quantidade-viagens">${viagem.size()}</span></h5></td>
-		</tr>
-	</tfoot>
+				</form>
 			</table>
-
 		</div>
 	</div>
 </div>
